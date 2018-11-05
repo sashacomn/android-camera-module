@@ -1,0 +1,110 @@
+<!--
+/*
+ * AudioVideoRecordingSample
+ * Sample project to cature audio and video from internal mic/camera and save as MPEG4 file.
+ *
+ * Copyright (c) 2014-2015 saki t_saki@serenegiant.com
+ *
+ * File name: fragment_main.xml
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ * All files in the folder are under this Apache License, Version 2.0.
+*/
+-->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/RelativeLayout1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.alexsheremeta.view.CameraFragment">
+
+	<com.alexsheremeta.view.CameraGLView
+		android:id="@+id/cameraView"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+
+	<ImageButton
+		android:id="@+id/butSwitch"
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+
+		android:layout_marginBottom="40dp"
+		android:layout_marginEnd="32dp"
+		android:background="@android:color/transparent"
+		android:scaleType="centerInside"
+		android:src="@drawable/switch_camera"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<ImageButton
+		android:id="@+id/record_button"
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+		android:layout_marginBottom="32dp"
+		android:background="@null"
+		android:scaleType="fitXY"
+		android:src="@drawable/record_button"
+		app:layout_constraintBottom_toBottomOf="@+id/cameraView"
+		app:layout_constraintEnd_toStartOf="@+id/cameraView"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/cameraView" />
+
+	<ImageButton
+		android:id="@+id/butFlash"
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+		android:layout_marginBottom="40dp"
+		android:layout_marginStart="32dp"
+		android:background="@null"
+		android:scaleType="centerInside"
+		android:src="@drawable/flashlight_auto_but"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<ImageButton
+		android:id="@+id/butPhoto"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="64dp"
+		android:layout_marginTop="32dp"
+		android:background="@drawable/camera_background_state"
+		android:paddingBottom="8dp"
+		android:src="@drawable/photo_mode_but"
+		app:layout_constraintEnd_toStartOf="@+id/cameraView"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/cameraView"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<ImageButton
+		android:id="@+id/butVideo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="64dp"
+		android:layout_marginTop="32dp"
+		android:background="@drawable/camera_background_state"
+		android:paddingBottom="8dp"
+		android:src="@drawable/video_mode_but"
+		app:layout_constraintEnd_toStartOf="@+id/cameraView"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/cameraView"
+		app:layout_constraintTop_toTopOf="@+id/cameraView" />
+
+
+</android.support.constraint.ConstraintLayout>
