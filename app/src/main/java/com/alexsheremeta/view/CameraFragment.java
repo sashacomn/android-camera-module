@@ -125,37 +125,33 @@ public class CameraFragment extends Fragment {
     private final OnClickListener mOnClickListener = new OnClickListener() {
         @Override
         public void onClick(final View view) {
-            switch (view.getId()) {
-                case R.id.cameraView:
-                    final int scale_mode = (mCameraView.getScaleMode() + 1) % 4;
-                    mCameraView.setScaleMode(scale_mode);
-                    break;
-                case R.id.record_button:
-                    if (currentCameraMode == CAMERA_VIDEO) {
-                        if (mMuxer == null)
-                            startRecording();
-                        else
-                            stopRecording();
-                    } else {
-                        takePhoto();
-                    }
-                    break;
+            int i = view.getId();
+            if (i == R.id.cameraView) {
+                final int scale_mode = (mCameraView.getScaleMode() + 1) % 4;
+                mCameraView.setScaleMode(scale_mode);
 
-                case R.id.butSwitch:
-                    mCameraView.switchCamera();
-                    break;
+            } else if (i == R.id.record_button) {
+                if (currentCameraMode == CAMERA_VIDEO) {
+                    if (mMuxer == null)
+                        startRecording();
+                    else
+                        stopRecording();
+                } else {
+                    takePhoto();
+                }
 
-                case R.id.butFlash:
-                    switchFlashMode();
-                    break;
+            } else if (i == R.id.butSwitch) {
+                mCameraView.switchCamera();
 
-                case R.id.butPhoto:
-                    setCameraMode(true);
-                    break;
+            } else if (i == R.id.butFlash) {
+                switchFlashMode();
 
-                case R.id.butVideo:
-                    setCameraMode(false);
-                    break;
+            } else if (i == R.id.butPhoto) {
+                setCameraMode(true);
+
+            } else if (i == R.id.butVideo) {
+                setCameraMode(false);
+
             }
         }
     };
