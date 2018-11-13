@@ -74,7 +74,7 @@ public final class CameraGLView extends GLSurfaceView {
         super(context, attrs);
         if (DEBUG) Log.v(TAG, "CameraGLView:");
         mRenderer = new CameraSurfaceRenderer(this);
-        setEGLContextClientVersion(2);    // GLES 2.0, API >= 8
+        setEGLContextClientVersion(2);
         setRenderer(mRenderer);
     }
 
@@ -101,6 +101,7 @@ public final class CameraGLView extends GLSurfaceView {
     }
 
     public void setScaleMode(final int mode) {
+        Log.e("SCALE", String.valueOf(mode));
         if (mScaleMode != mode) {
             mScaleMode = mode;
             queueEvent(new Runnable() {
@@ -197,9 +198,11 @@ public final class CameraGLView extends GLSurfaceView {
     }
 
     public void switchCamera() {
+        int scaleMode = currentCameraId == 0 ? 1 : 0;
         currentCameraId = currentCameraId == 0 ? 1 : 0;
         stopPreview();
         startPreview(getWidth(), getHeight());
+        setScaleMode(scaleMode);
     }
 
     //********************************************************************************
@@ -602,13 +605,11 @@ public final class CameraGLView extends GLSurfaceView {
             }, new Camera.PictureCallback() {
                 @Override
                 public void onPictureTaken(byte[] bytes, Camera camera) {
-                    PhotoProceedTask photoProceedTask = new PhotoProceedTask(bytes, mWeakParent.get().mRotation);
+                    PhotoProceedTask photoProceedTask = new PhotoProceedTask(bytes, currentCameraId == 0 ? mWeakParent.get().mRotation : -90 );
                     photoProceedTask.setOnImageTakenListener(new OnImageTakenListener() {
                         @Override
                         public void onPhotoTaken(String url) {
                             onImageTakenListener.onPhotoTaken(url);
-                            //stopPreview();
-                            //startPreview(previewHeight, previewWidth);
                         }
                     });
                     photoProceedTask.execute();

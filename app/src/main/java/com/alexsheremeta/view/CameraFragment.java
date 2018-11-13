@@ -127,8 +127,8 @@ public class CameraFragment extends Fragment {
         public void onClick(final View view) {
             int i = view.getId();
             if (i == R.id.cameraView) {
-                final int scale_mode = (mCameraView.getScaleMode() + 1) % 4;
-                mCameraView.setScaleMode(scale_mode);
+              // final int scale_mode = (mCameraView.getScaleMode() + 1) % 4;
+              //  mCameraView.setScaleMode(scale_mode);
 
             } else if (i == R.id.record_button) {
                 if (currentCameraMode == CAMERA_VIDEO) {

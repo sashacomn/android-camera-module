@@ -6,7 +6,7 @@ publish {
 
     def groupProjectID = 'com.alexsheremeta'
     def artifactProjectID = 'CameraModule'
-    def publishVersionID = '0.1.1'
+    def publishVersionID = '0.1.2'
 
     userOrg = 'sashacomn'
     repoName = 'CamerammModule'
